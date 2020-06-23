@@ -49,9 +49,13 @@ public sealed class Platform
             {
                 architecture = "arm64";
             }
-            else
+            else if (Environment.GetEnvironmentVariable("PROCESSOR_ARCHITECTURE") == "AMD64") 
             {
                 architecture = "x64";
+            }
+            else 
+            {
+                throw new Exception($"Unexpected architecture: {Environment.GetEnvironmentVariable("PROCESSOR_ARCHITECTURE")}");
             }
 
         }

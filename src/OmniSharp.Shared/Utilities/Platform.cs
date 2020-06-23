@@ -15,7 +15,8 @@ namespace OmniSharp.Utilities
     {
         Unknown,
         x86,
-        x64
+        x64,
+        ARM64
     }
 
     public sealed class Platform
@@ -72,6 +73,10 @@ namespace OmniSharp.Utilities
                     Environment.GetEnvironmentVariable("PROCESSOR_ARCHITEW6432") == null)
                 {
                     architecture = Architecture.x86;
+                }
+                else if (Environment.GetEnvironmentVariable("PROCESSOR_ARCHITECTURE") == "ARM64") 
+                {
+                    architecture = Architecture.ARM64;
                 }
                 else
                 {
