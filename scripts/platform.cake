@@ -16,7 +16,9 @@ public sealed class Platform
     public bool IsLinux => _os == "Linux";
 
     public bool Is32Bit => _architecture == "x86";
-    public bool Is64Bit => _architecture == "x64";
+    public bool Is64Bit => _architecture == "x64" || _architecture == "arm64";
+
+    public bool IsArm => _architecture == "arm64";
 
     private Platform(string os, string architecture, Version version, string distroName = null)
     {
@@ -43,10 +45,15 @@ public sealed class Platform
             {
                 architecture = "x86";
             }
+            else if (Environment.GetEnvironmentVariable("PROCESSOR_ARCHITECTURE") == "ARM64") 
+            {
+                architecture = "arm64";
+            }
             else
             {
                 architecture = "x64";
             }
+
         }
         else
         {

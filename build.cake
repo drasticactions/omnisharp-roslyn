@@ -332,6 +332,7 @@ Task("CreateMSBuildFolder")
 
     if (Platform.Current.IsWindows)
     {
+        CopyDotNetHostResolver(env, "win", "arm", "hostfxr.dll", msbuildSdkResolverTargetFolder, copyToArchSpecificFolder: true);
         CopyDotNetHostResolver(env, "win", "x86", "hostfxr.dll", msbuildSdkResolverTargetFolder, copyToArchSpecificFolder: true);
         CopyDotNetHostResolver(env, "win", "x64", "hostfxr.dll", msbuildSdkResolverTargetFolder, copyToArchSpecificFolder: true);
     }
